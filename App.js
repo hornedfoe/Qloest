@@ -12,14 +12,15 @@ export default function App() {
   const Stack = createStackNavigator();
   return (
    <NavigationContainer>
+    <StatusBar style='auto' hidden={true}/>
   <Stack.Navigator>
     <Stack.Group>
-     <Stack.Screen name='onboard' component={Onboard}/>
-     <Stack.Screen name='Login' component={Login}/>
+     <Stack.Screen name='onboard' component={Onboard} options={{ headerShown: false }}/>
+     <Stack.Screen name='Login' component={Login} options={{ headerShown: false }}/>
      </Stack.Group>
 <>
      <Stack.Group>
-          <Stack.Screen name="home" component={Home} />
+          <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
         </Stack.Group>
         </>
 
