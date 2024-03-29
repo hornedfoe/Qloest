@@ -5,79 +5,98 @@ import Swiper from 'react-native-deck-swiper'
 const DUMMY_DATA = [
   {
     displayName: "number 1",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 2",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 3",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   },
   {
     displayName: "number 1",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 2",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 3",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   },
   {
     displayName: "number 1",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 2",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 3",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   },
   {
     displayName: "number 1",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 2",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 3",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   },
   {
     displayName: "number 1",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 2",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 3",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   },
   {
     displayName: "number 1",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 2",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   } , 
   {
     displayName: "number 3",
-    photoURL : 'https://legacy.reactjs.org/logo-og.png',
+    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
   }
 ];
 
+// UP - addtocart
+
+// left - reject
+
+// right - like
+
 const Feed = () => {
+
+  const userLiked = () => {
+    console.log('liked')
+  }
+
+  const userSkipped = () => {
+    console.log('skipped')
+  }
+
+  const userRejected = () => {
+    console.log('rejected')
+  }
+
   return (
     <View
       style = {{
@@ -103,7 +122,47 @@ const Feed = () => {
         stackSize={DUMMY_DATA.length}
         cardIndex={0}
         animateCardOpacity
-        verticalSwipe = {false}
+        disableBottomSwipe = {true}
+        onSwipedLeft = {userSkipped}
+        onSwipedRight = {userLiked}
+        onSwipedTop = {userRejected}
+        overlayLabels = {{
+          left : {
+            style: {
+              wrapper: {
+                opacity:0.5,
+                backgroundColor: 'rgba(51, 71, 255 , 0.5)',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius:20,
+              }
+           },
+          },
+          top : {
+            style: {
+              wrapper: {
+                backgroundColor: 'rgba(255, 65, 51 , 0.5)',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius:20,
+              }
+           },
+          },
+          right : {
+            style: {
+              wrapper: {
+                backgroundColor: 'rgba(22, 196, 51 , 0.5)',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius:20,
+                
+              }
+           },
+          },
+        }}
 
         renderCard={(card) => {
           return card ? (

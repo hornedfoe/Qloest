@@ -1,6 +1,9 @@
-import { View, Text , TextInput , TouchableOpacity, StyleSheet} from 'react-native'
+import { View, Text , TextInput , TouchableOpacity, StyleSheet, Alert} from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 
 const Login = () => {
   const [type , setType] = useState(1)
@@ -9,26 +12,44 @@ const Login = () => {
   const [password , setPassword] = useState("")
   const [phno , setPhno] = useState("")
   const navigation = useNavigation();
+
   
   const signIn = async() => {
+    const formdata = {
+      name  : name,
+      email : email,
+      phonenumber : phno,
+      password : password
+    }
     try{
-      let url= ""
-      const res = await fetch(url)
-      navigation.navigate('home')
+      const res = await axios.post("https://qloest-backend.onrender.com/auth/login" , formdata);
+      console.log(res.data.user)
+      await AsyncStorage.setItem("userdata",JSON.stringify(res.data.user))
+      const s = await AsyncStorage.getItem("userdata");
+      navigation.replace('home')
+      
     }
     catch(e){
-      // Alert.alert("Oops :(" , "Invalid user credentials")
-      navigation.navigate('home')
+      Alert.alert("Oops :(" , "Invalid user credentials")
     }
   }
 
-  const signUp = () => {
+  const signUp = async() => {
+    const formdata = {
+      name  : name,
+      email : email,
+      phonenumber : phno,
+      password : password
+    }
     try{
-      let url = ""
-      const res = fetch(url)
+      console.log(formdata);
+      const res = await axios.post("https://qloest-backend.onrender.com/auth/register" , formdata);
+      Alert.alert("😊" , "User created successfully")
       setType(1)
+      
     }
     catch(e){
+      console.log(e);
       Alert.alert("Oops :(" , "Invalid user credentials")
     }
   }
@@ -41,21 +62,22 @@ const Login = () => {
             <Text style={styles.title}>SignIn</Text>
             <Text style={styles.subtitle}>Access to your account</Text>
             <View style={styles.inputContainer}>
-              <Text style={styles.label}>Name</Text>
-              <TextInput
-                onChangeText={(text) => setName(text)}
-                placeholder='Enter name'
-                value={name}
-                style={styles.input}
-              />
-            </View>
-            <View style={styles.inputContainer}>
               <Text style={styles.label}>Email</Text>
               <TextInput
                 onChangeText={(text) => setEmail(text)}
                 placeholder='Enter email'
                 value={email}
                 style={styles.input}
+              />
+            </View>
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>password</Text>
+              <TextInput
+                onChangeText={(text) => setPassword(text)}
+                placeholder='Enter password'
+                value={password}
+                style={styles.input}
+                secureTextEntry={true}  
               />
             </View>
             <TouchableOpacity onPress={signIn} style={styles.button}>

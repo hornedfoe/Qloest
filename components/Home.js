@@ -8,7 +8,7 @@ import { Ionicons, Feather} from "@expo/vector-icons";
 
 const Home = () => {
     const Tab = createBottomTabNavigator();
-    const activeColor = 'red'; // Define the active color
+    const activeColor = 'skyblue'; // Define the active color
 
     return (
         <View style={{ flex: 1 }}>
