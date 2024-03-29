@@ -1,27 +1,54 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Onboard = () => {
   const navigation = useNavigation();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const userDataString = await AsyncStorage.getItem('userdata');
+        if (userDataString) {
+          const userData = JSON.parse(userDataString);
+          setUser(userData);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+    getUserData();
+  }, []);
+
+  console.log(user);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Qloest</Text>
-      <Text style={styles.description}>
-        Qloest is your ultimate destination for all things fashion! Browse through our extensive collection of dresses, ranging from casual wear to formal attire. With our user-friendly interface and secure payment options, shopping for your favorite outfits has never been easier.
-      </Text>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.replace('Login')
-        }}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Get Started</Text>
-      </TouchableOpacity>
-    </View>
-  )
-}
+    <>
+      {
+        user ? (
+          navigation.replace('home')
+        ) : (
+          <View style={styles.container}>
+            <Text style={styles.title}>Qloest</Text>
+            <Text style={styles.description}>
+              Qloest is your ultimate destination for all things fashion! Browse through our extensive collection of dresses, ranging from casual wear to formal attire. With our user-friendly interface and secure payment options, shopping for your favorite outfits has never been easier.
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.replace('Login');
+              }}
+              style={styles.button}
+            >
+              <Text style={styles.buttonText}>Get Started</Text>
+            </TouchableOpacity>
+          </View>
+        )
+      }
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

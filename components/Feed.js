@@ -1,115 +1,62 @@
-import { View, Text,Image } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import React from 'react'
 import Swiper from 'react-native-deck-swiper'
+import data from '../data.js'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const DUMMY_DATA = [
-  {
-    displayName: "number 1",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 2",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 3",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  },
-  {
-    displayName: "number 1",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 2",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 3",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  },
-  {
-    displayName: "number 1",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 2",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 3",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  },
-  {
-    displayName: "number 1",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 2",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 3",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  },
-  {
-    displayName: "number 1",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 2",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 3",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  },
-  {
-    displayName: "number 1",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 2",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  } , 
-  {
-    displayName: "number 3",
-    photoURL : 'https://images.unsplash.com/photo-1681896616404-6568bf13b022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80',
-  }
-];
-
-// UP - addtocart
-
-// left - reject
-
-// right - like
+const DUMMY_DATA = data;
 
 const Feed = () => {
 
-  const userLiked = () => {
-    console.log('liked')
+  const userLiked = (card) => {
+    console.log('Liked:', card.name);
   }
 
-  const userSkipped = () => {
-    console.log('skipped')
+  const userAddedThis = async (card) => {
+    try {
+      // Get existing cart items from AsyncStorage
+      const existingCart = await AsyncStorage.getItem('userCart');
+  
+      // Parse existing cart items (if any)
+      let parsedCart = existingCart ? JSON.parse(existingCart) : [];
+  
+      // Check if the card already exists in the cart
+      const isCardAlreadyAdded = parsedCart.some(item => item.id === card.id);
+  
+      if (isCardAlreadyAdded) {
+        console.log(`${card.name} is already in the cart.`);
+        return; // Exit the function if the card is already in the cart
+      }
+  
+      // Add the new card to the cart
+      parsedCart.push(card);
+  
+      // Update AsyncStorage with the new cart items
+      await AsyncStorage.setItem('userCart', JSON.stringify(parsedCart));
+  
+      console.log('Added to cart:', card.name);
+      console.log('Updated cart:', parsedCart); // Optional: Log the updated cart
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    }
   }
-
-  const userRejected = () => {
-    console.log('rejected')
+  const userRejected = (card) => {
+    console.log('Rejected:', card.name);
   }
 
   return (
     <View
-      style = {{
-        display : 'flex',
-        flexDirection:'column',
-        justifyContent:'center',
-        alignItems:'center'
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}
     >
       <Text
-        style = {{
-          paddingTop:20,
-          fontSize:30
+        style={{
+          paddingTop: 20,
+          fontSize: 30
         }}
       >
         Qloest
@@ -121,46 +68,33 @@ const Feed = () => {
         cards={DUMMY_DATA}
         stackSize={DUMMY_DATA.length}
         cardIndex={0}
-        animateCardOpacity
-        disableBottomSwipe = {true}
-        onSwipedLeft = {userSkipped}
-        onSwipedRight = {userLiked}
-        onSwipedTop = {userRejected}
-        overlayLabels = {{
-          left : {
+        disableBottomSwipe={true}
+        onSwipedLeft={(cardIndex) => userRejected(DUMMY_DATA[cardIndex])}
+        onSwipedRight={(cardIndex) => userLiked(DUMMY_DATA[cardIndex])}
+        onSwipedTop={(cardIndex) => userAddedThis(DUMMY_DATA[cardIndex])}
+        overlayLabels={{
+          left: {
             style: {
               wrapper: {
-                opacity:0.5,
-                backgroundColor: 'rgba(51, 71, 255 , 0.5)',
+                opacity: 0.5,
+                backgroundColor: 'rgba(255, 65, 51 , 0.25)',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRadius:20,
+                borderRadius: 20,
               }
-           },
+            },
           },
-          top : {
+          right: {
             style: {
               wrapper: {
-                backgroundColor: 'rgba(255, 65, 51 , 0.5)',
+                backgroundColor: 'rgba(22, 196, 51 , 0.25)',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderRadius:20,
+                borderRadius: 20,
               }
-           },
-          },
-          right : {
-            style: {
-              wrapper: {
-                backgroundColor: 'rgba(22, 196, 51 , 0.5)',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius:20,
-                
-              }
-           },
+            },
           },
         }}
 
@@ -169,11 +103,14 @@ const Feed = () => {
             <View key={card.id} style={{ backgroundColor: '#fff', height: '100%', borderRadius: 20, position: 'relative' }}>
               <Image
                 style={{ position: 'absolute', top: 0, height: '100%', width: '100%', borderRadius: 20 }}
-                source={{ uri: card.photoURL }}
+                source={{ uri: card.image }}
               />
               <View style={{ position: 'absolute', bottom: 0, backgroundColor: '#fff', width: '100%', height: 80, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', paddingHorizontal: 24, paddingVertical: 8, borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}>
                 <View>
-                  <Text>{card.displayName}</Text>
+                  <Text>{card.name}</Text>
+                </View>
+                <View>
+                  <Text>{card.price}</Text>
                 </View>
               </View>
             </View>
