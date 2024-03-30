@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
-    backgroundColor: '#ff69b4', // Pink background color
+    backgroundColor: '#e75651', // Pink background color
   },
   title: {
     fontSize: 36,

@@ -44,7 +44,7 @@ const Login = () => {
     try{
       console.log(formdata);
       const res = await axios.post("https://qloest-backend.onrender.com/auth/register" , formdata);
-      Alert.alert("😊" , "User created successfully")
+      Alert.alert("Congrats!!" , "User created successfully")
       setType(1)
       
     }

@@ -30,15 +30,16 @@ const Cart = () => {
     return parseFloat(priceString.replace('$', '').replace(',', ''));
   };
 
-
   // Calculate total price
   const totalPrice = cartItems.reduce((acc, item) => acc + parsePrice(item.price), 0);
 
   // Function to handle the buy button press
-  const handleBuy = async () => {
-    console.log('Bought')
-    setCartItems([])
-    await AsyncStorage.removeItem('userCart')
+  const handleBuy = async (index) => {
+    console.log('Bought');
+    const updatedCart = [...cartItems];
+    updatedCart.splice(index, 1); // Remove the item at the specified index
+    setCartItems(updatedCart);
+    await AsyncStorage.setItem('userCart', JSON.stringify(updatedCart)); // Update AsyncStorage
   };
 
   return (
@@ -49,14 +50,14 @@ const Cart = () => {
             <Image source={{ uri: item.image }} style={styles.image} />
             <Text>{item.name}</Text>
             <Text style={styles.price}>{item.price}</Text>
+            <TouchableOpacity onPress={() => handleBuy(index)} style={styles.buyButton}>
+              <Text style={styles.buyButtonText}>Buy Now</Text>
+            </TouchableOpacity>
           </View>
         ))}
       </ScrollView>
       <View style={styles.footer}>
         <Text style={styles.totalPrice}>Total Price: ${totalPrice.toFixed(2)}</Text>
-        <TouchableOpacity onPress={handleBuy} style={styles.buyButton}>
-          <Text style={styles.buyButtonText}>Buy</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -96,9 +97,8 @@ const styles = StyleSheet.create({
   },
   buyButton: {
     backgroundColor: 'blue',
-    padding: 10,
-    marginTop: 10,
-    alignItems: 'center',
+    padding: 5,
+    marginLeft: 10,
     borderRadius: 5,
   },
   buyButtonText: {
